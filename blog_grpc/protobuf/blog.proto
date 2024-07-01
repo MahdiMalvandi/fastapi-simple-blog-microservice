@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package blog;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+message Blog {
+    int32 id = 1;
+    string title = 2;
+    string content = 3;
+    google.protobuf.Timestamp created = 4;
+    bool is_published = 5;
+    int32 user_id = 6;
+}
+
+message BlogRequest {
+    int32 id = 1;
+}
+message BlogListResponse {
+    repeated Blog blogs = 1;
+}
+message BlogCreate {
+    string title = 2;
+    string content = 3;
+    bool is_published = 5;
+    int32 user_id = 6;
+}
+service BlogService {
+    rpc Read(BlogRequest) returns (Blog) {}
+    rpc Create(BlogCreate) returns (Blog) {}
+    rpc List(google.protobuf.Empty) returns (BlogListResponse) {}
+    rpc Update(BlogCreate) returns (Blog) {}
+    rpc Delete(BlogRequest) returns (Blog) {}
+}
