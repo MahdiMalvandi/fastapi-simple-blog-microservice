@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import blog_pb2 as blog__pb2
+from . import blog_pb2 as blog__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 GRPC_GENERATED_VERSION = '1.64.1'
